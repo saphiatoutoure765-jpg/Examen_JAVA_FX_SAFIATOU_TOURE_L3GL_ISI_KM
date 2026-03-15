@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.LoginController">
+
+    <VBox alignment="CENTER" spacing="20.0"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          style="-fx-background-color: #f0f4f8; -fx-padding: 40;">
+
+
+        <Label text="Clinique Médicale" style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+        <Label text="Connexion au système" style="-fx-font-size: 14px; -fx-text-fill: #666;"/>
+
+
+        <VBox spacing="12" style="-fx-background-color: white; -fx-padding: 30; -fx-background-radius: 10;">
+            <Label text="Email :" style="-fx-font-weight: bold;"/>
+            <TextField fx:id="emailField" promptText="Entrez votre email" prefWidth="300"/>
+
+            <Label text="Mot de passe :" style="-fx-font-weight: bold;"/>
+            <PasswordField fx:id="passwordField" promptText="Entrez votre mot de passe" prefWidth="300"/>
+
+            <Label fx:id="errorLabel" style="-fx-text-fill: red;" text=""/>
+
+            <Button text="Se connecter" onAction="#seConnecter"
+                    prefWidth="300" prefHeight="40"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5; -fx-font-size: 14px;"/>
+        </VBox>
+    </VBox>
+</AnchorPane>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.PatientController">
+
+    <VBox spacing="14" style="-fx-padding: 25; -fx-background-color: #f7f9fc;"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <Label text="Gestion des Patients"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+
+        <!-- Formulaire -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+
+            <GridPane hgap="20" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="220"/>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="220"/>
+                </columnConstraints>
+
+                <Label text="Nom *" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="nomField" promptText="Nom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Prenom *" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="prenomField" promptText="Prenom" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Date naissance" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <DatePicker fx:id="dateNaissancePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Sexe" GridPane.rowIndex="1" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="sexeCombo" prefWidth="220" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="Telephone *" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="telephoneField" promptText="Telephone" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Groupe sanguin" GridPane.rowIndex="2" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="groupeSanguinCombo" prefWidth="220" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                <Label text="Adresse" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="adresseField" promptText="Adresse" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+            </GridPane>
+
+            <Label text="Antecedents medicaux" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="antecedentsArea" prefHeight="60" promptText="Antecedents medicaux..."/>
+
+            <Label fx:id="messageLabel" text=""/>
+
+            <HBox spacing="12">
+                <Button text="Ajouter" onAction="#ajouterPatient"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Modifier" onAction="#modifierPatient"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Supprimer" onAction="#supprimerPatient"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 8 20;"/>
+                <Button text="Vider" onAction="#viderFormulaire"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 8 20;"/>
+            </HBox>
+        </VBox>
+
+
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <TextField fx:id="rechercheField" promptText="Rechercher par nom..." prefWidth="300"/>
+            <Button text="Rechercher" onAction="#rechercherPatient"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-padding: 6 16;"/>
+        </HBox>
+
+
+        <TableView fx:id="tablePatients" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colNom" text="Nom" prefWidth="160"/>
+                <TableColumn fx:id="colPrenom" text="Prenom" prefWidth="160"/>
+                <TableColumn fx:id="colTelephone" text="Telephone" prefWidth="130"/>
+                <TableColumn fx:id="colSexe" text="Sexe" prefWidth="80"/>
+                <TableColumn fx:id="colGroupeSanguin" text="Groupe sanguin" prefWidth="130"/>
+            </columns>
+            <placeholder><Label text="Aucun patient trouve"/></placeholder>
+        </TableView>
+
+    </VBox>
+</AnchorPane>

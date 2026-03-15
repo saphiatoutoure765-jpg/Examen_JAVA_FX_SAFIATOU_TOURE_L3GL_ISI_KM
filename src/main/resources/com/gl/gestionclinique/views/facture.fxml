@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.FactureController">
+
+    <VBox spacing="16" style="-fx-padding: 25; -fx-background-color: #f7f9fc;"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <Label text="Gestion de la Facturation"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+
+        <!-- Formulaire -->
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+            <Label text="Générer une facture" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+            <GridPane hgap="20" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="150"/>
+                    <ColumnConstraints prefWidth="250"/>
+                    <ColumnConstraints prefWidth="150"/>
+                    <ColumnConstraints prefWidth="250"/>
+                </columnConstraints>
+
+                <Label text="Consultation *" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="consultationCombo" prefWidth="250" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Montant (FCFA) *" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="montantField" promptText="Ex: 15000" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Mode de paiement" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="modePaiementCombo" prefWidth="250" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <Label fx:id="messageLabel" text=""/>
+
+            <HBox spacing="12">
+                <Button text="Générer Facture" onAction="#genererFacture"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Marquer comme Payée" onAction="#marquerPayee"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-padding: 8 20;"/>
+                <Button text="Exporter PDF" onAction="#exporterPDF"
+                        style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-padding: 8 20;"/>
+            </HBox>
+        </VBox>
+
+
+        <Label text="Historique des factures" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+        <TableView fx:id="tableFactures" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+                <TableColumn fx:id="colMontant" text="Montant (FCFA)" prefWidth="150"/>
+                <TableColumn fx:id="colMode" text="Mode paiement" prefWidth="150"/>
+                <TableColumn fx:id="colStatut" text="Statut" prefWidth="120"/>
+            </columns>
+            <placeholder><Label text="Aucune facture enregistrée"/></placeholder>
+        </TableView>
+    </VBox>
+</AnchorPane>

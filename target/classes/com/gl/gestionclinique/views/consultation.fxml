@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.ConsultationController">
+
+    <ScrollPane fitToWidth="true"
+                AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+        <VBox spacing="16" style="-fx-padding: 25; -fx-background-color: #f7f9fc;">
+
+            <Label text="Gestion des Consultations"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+
+            <!-- Formulaire -->
+            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+                <Label text="Enregistrer une consultation" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+                <GridPane hgap="20" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints prefWidth="130"/>
+                        <ColumnConstraints prefWidth="230"/>
+                        <ColumnConstraints prefWidth="130"/>
+                        <ColumnConstraints prefWidth="230"/>
+                    </columnConstraints>
+
+                    <Label text="Patient *" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="patientCombo" prefWidth="230" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Médecin *" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="medecinCombo" prefWidth="230" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                    <Label text="Rendez-vous" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                    <ComboBox fx:id="rendezVousCombo" prefWidth="230" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                </GridPane>
+
+                <Label text="Diagnostic" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="diagnosticArea" prefHeight="80" promptText="Diagnostic..."/>
+
+                <Label text="Observations" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="observationsArea" prefHeight="80" promptText="Observations cliniques..."/>
+
+                <Label text="Prescription" style="-fx-font-weight: bold;"/>
+                <TextArea fx:id="prescriptionArea" prefHeight="80" promptText="Médicaments et posologie..."/>
+
+                <Label fx:id="messageLabel" text=""/>
+
+                <HBox spacing="12">
+                    <Button text="Enregistrer" onAction="#enregistrer"
+                            style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                    <Button text="Générer Ordonnance PDF" onAction="#genererOrdonnance"
+                            style="-fx-background-color: #e67e22; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                </HBox>
+            </VBox>
+
+            <!-- Tableau -->
+            <TableView fx:id="tableConsultations" prefHeight="220">
+                <columns>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                    <TableColumn fx:id="colDate" text="Date" prefWidth="120"/>
+                    <TableColumn fx:id="colDiagnostic" text="Diagnostic" prefWidth="400"/>
+                </columns>
+                <placeholder><Label text="Aucune consultation enregistrée"/></placeholder>
+            </TableView>
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

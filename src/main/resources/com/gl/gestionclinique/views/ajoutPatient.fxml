@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.PatientController">
+
+    <ScrollPane AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+                AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+                fitToWidth="true">
+        <VBox spacing="16" style="-fx-padding: 30; -fx-background-color: #f7f9fc;">
+
+            <Label text="Ajouter un Patient"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+
+            <GridPane hgap="20" vgap="12">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" prefWidth="150"/>
+                    <ColumnConstraints prefWidth="250"/>
+                    <ColumnConstraints minWidth="120" prefWidth="150"/>
+                    <ColumnConstraints prefWidth="250"/>
+                </columnConstraints>
+
+                <Label text="Nom *" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="nomField" promptText="Nom" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Prénom *" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="prenomField" promptText="Prénom" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Date naissance" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <DatePicker fx:id="dateNaissancePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Sexe" GridPane.rowIndex="1" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="sexeCombo" prefWidth="250" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+
+                <Label text="Téléphone *" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="telephoneField" promptText="Ex: 77 000 00 00" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <Label text="Groupe sanguin" GridPane.rowIndex="2" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="groupeSanguinCombo" prefWidth="250" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+
+                <Label text="Adresse" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="adresseField" promptText="Adresse" GridPane.rowIndex="3" GridPane.columnIndex="1" GridPane.columnSpan="3"/>
+            </GridPane>
+
+            <Label text="Antécédents médicaux" style="-fx-font-weight: bold;"/>
+            <TextArea fx:id="antecedentsArea" prefHeight="100" promptText="Antécédents médicaux..."/>
+
+            <Label fx:id="messageLabel" text=""/>
+
+            <HBox spacing="12">
+                <Button text="Ajouter" onAction="#ajouterPatient"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Modifier" onAction="#modifierPatient"
+                        style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Vider" onAction="#viderFormulaire"
+                        style="-fx-background-color: #95a5a6; -fx-text-fill: white; -fx-padding: 8 20;"/>
+            </HBox>
+        </VBox>
+    </ScrollPane>
+</AnchorPane>

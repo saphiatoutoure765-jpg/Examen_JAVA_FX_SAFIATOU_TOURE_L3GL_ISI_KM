@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1550.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.Controller.RendezVousController">
+
+    <VBox spacing="16" style="-fx-padding: 25; -fx-background-color: #f7f9fc;"
+          AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0"
+          AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+
+        <Label text="Gestion des Rendez-vous"
+               style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2980b9;"/>
+
+
+        <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 8;">
+            <Label text="Planifier un rendez-vous" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+
+            <GridPane hgap="20" vgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="220"/>
+                    <ColumnConstraints prefWidth="120"/>
+                    <ColumnConstraints prefWidth="220"/>
+                </columnConstraints>
+
+                <Label text="Patient *" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="patientCombo" prefWidth="220" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Médecin *" GridPane.rowIndex="0" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <ComboBox fx:id="medecinCombo" prefWidth="220" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+                <Label text="Date *" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-font-weight: bold;"/>
+                <DatePicker fx:id="datePicker" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Heure * (HH:MM)" GridPane.rowIndex="1" GridPane.columnIndex="2" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="heureField" promptText="Ex: 09:30" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            </GridPane>
+
+            <Label fx:id="messageLabel" text=""/>
+
+            <HBox spacing="12">
+                <Button text="Planifier" onAction="#planifier"
+                        style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+                <Button text="Annuler le sélectionné" onAction="#annuler"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-padding: 8 20;"/>
+                <Button text="Rendez-vous du jour" onAction="#afficherDuJour"
+                        style="-fx-background-color: #8e44ad; -fx-text-fill: white; -fx-padding: 8 20;"/>
+            </HBox>
+        </VBox>
+
+
+        <TableView fx:id="tableRendezVous" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="colDateHeure" text="Date et Heure" prefWidth="200"/>
+                <TableColumn fx:id="colStatut" text="Statut" prefWidth="120"/>
+            </columns>
+            <placeholder><Label text="Aucun rendez-vous"/></placeholder>
+        </TableView>
+    </VBox>
+</AnchorPane>

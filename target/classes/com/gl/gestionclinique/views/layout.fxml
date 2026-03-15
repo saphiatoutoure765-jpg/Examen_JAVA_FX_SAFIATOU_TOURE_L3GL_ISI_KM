@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="Infinity" maxWidth="Infinity"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gl.gestionclinique.HelloController">
+
+    <!-- BARRE NAVIGATION HAUT -->
+    <top>
+        <Pane prefHeight="60.0" style="-fx-background-color: #2980b9;" BorderPane.alignment="CENTER">
+            <children>
+                <Label text="Clinique Médicale" layoutX="20" layoutY="15"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: white;"/>
+                <Label fx:id="userLabel" layoutX="400" layoutY="20"
+                       style="-fx-font-size: 12px; -fx-text-fill: #d6eaf8;"/>
+                <MenuBar layoutX="600.0" layoutY="15.0" style="-fx-background-color: transparent;">
+                    <menus>
+                        <Menu text="Patients" style="-fx-text-fill: white;">
+                            <items>
+                                <MenuItem text="Liste  et ajout des patients" onAction="#afficherPatients"/>
+
+                            </items>
+                        </Menu>
+                        <Menu text="Rendez-vous">
+                            <items>
+                                <MenuItem text="Gérer les rendez-vous" onAction="#afficherRendezVous"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Consultations">
+                            <items>
+                                <MenuItem text="Gérer les consultations" onAction="#afficherConsultations"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Facturation">
+                            <items>
+                                <MenuItem text="Gérer les factures" onAction="#afficherFactures"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </Pane>
+    </top>
+
+    <!-- CONTENU CENTRAL avec StackPane -->
+    <center>
+        <StackPane fx:id="stackPane"/>
+    </center>
+
+    <!-- BARRE BAS -->
+    <bottom>
+        <Pane prefHeight="30" style="-fx-background-color: #2c3e50;">
+            <Label text="2025 Clinique Médicale ISIKM" layoutX="10" layoutY="8"
+                   style="-fx-text-fill: #aaa; -fx-font-size: 11px;"/>
+        </Pane>
+    </bottom>
+</BorderPane>
